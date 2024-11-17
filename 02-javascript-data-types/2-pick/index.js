@@ -7,8 +7,8 @@
 export const pick = (obj, ...fields) => {
   const newObj = {};
 
-  for (let field of fields) {
-    for (let key of Object.keys(obj)) {
+  for (const field of fields) {
+    for (const key of Object.keys(obj)) {
       if (field === key) {
         newObj[key] = obj[key];
       }
