@@ -5,20 +5,23 @@
  * @returns {string} - the new string without extra symbols according passed size
  */
 export function trimSymbols(string, size) {
-  let arr = string.split('');
   let total = 0;
-  let newArr = [];
+  let newString = "";
 
-  return newArr = arr.filter(function(item, index) {
-      if (arr[index - 1] && item != arr[index - 1]) {
-        total = 0;
-      }
-      total++;
+  if (isNaN(size)) return string;
 
-      if (size && (total <= size) || isNaN(size)   ) {
-        return item;
-      }
+  for (let i=0; i<string.length; ) {
+    if (i==0 || string[i]!= string[i-1]) {
+      total = 0;
     }
 
-  ).join('');
+    if (total < size) {
+      newString+=string[i];
+    }
+
+    total++;
+    i++;
+  }
+
+  return newString;
 }

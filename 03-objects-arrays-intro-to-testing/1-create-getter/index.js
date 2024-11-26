@@ -8,12 +8,14 @@ export function createGetter(path) {
 
   return function(obj) {
 
-    for (const [key, value] of Object.entries(obj)) {
-      for (const item of arr) {
+    for (const item of arr) {
+      if (Object.hasOwn(obj, item)) {
         obj = obj[item];
+      } else {
+        return;
       }
-
-      return obj;
     }
+
+    return obj;
   }
 }
