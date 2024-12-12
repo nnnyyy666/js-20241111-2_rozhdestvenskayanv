@@ -44,22 +44,22 @@ export default class NotificationMessage {
       document.body.appendChild(this.element);
     }
 
-    setTimeout(() => {
+    this.timerId = setTimeout(() => {
       this.remove()
     }, this.duration);
 
   }
 
   remove() {
+
     if (document.body.contains(this.element)) {
       this.element.remove();
-      this.element = null;
-      NotificationMessage.lastShownComponent = null;
     }
   }
 
   destroy() {
     this.remove();
+    clearTimeout(this.timerId);
   }
 
 
